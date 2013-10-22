@@ -1,8 +1,10 @@
 package MAB2::Parser::XML;
 
 # ABSTRACT: MAB2 XML parser
-our $VERSION = '0.01'; # VERSION
+our $VERSION = '0.02'; # VERSION
 
+use strict;
+use warnings;
 use Carp qw<croak>;
 use XML::LibXML::Reader;
 
@@ -102,7 +104,7 @@ MAB2::Parser::XML - MAB2 XML parser
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 

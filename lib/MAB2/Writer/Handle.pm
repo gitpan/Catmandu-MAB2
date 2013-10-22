@@ -1,12 +1,21 @@
 package MAB2::Writer::Handle;
 
 # ABSTRACT: Utility class that implements a file and filehandle attribute to write to
-our $VERSION = '0.01'; # VERSION
+our $VERSION = '0.02'; # VERSION
 
 use strict;
 use Moo::Role;
-use Scalar::Util qw(blessed openhandle);
 use Carp qw(croak);
+use Encode qw(find_encoding);
+use Scalar::Util qw(blessed openhandle);
+
+has encoding => (
+    is  => 'rw',
+    isa => sub {
+        find_encoding($_[0]) or croak "encoding \"$_[0]\" is not a valid encoding";
+    },
+    default => sub { 'UTF-8' },
+);
 
 has file => (
     is  => 'rw',
@@ -30,7 +39,8 @@ has fh => (
 sub _set_fh {
     my ($self) = @_;
 
-    open my $fh, '>:encoding(UTF-8)', $self->file
+    my $encoding = $self->encoding;
+    open my $fh, ">:encoding($encoding)", $self->file
         or croak 'could not open file!';
     $self->fh($fh);
 }
@@ -63,7 +73,7 @@ MAB2::Writer::Handle - Utility class that implements a file and filehandle attri
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 AUTHOR
 

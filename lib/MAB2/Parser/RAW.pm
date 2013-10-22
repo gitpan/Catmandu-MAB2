@@ -1,9 +1,10 @@
 package MAB2::Parser::RAW;
 
 # ABSTRACT: MAB2 RAW format parser
-our $VERSION = '0.01'; # VERSION
+our $VERSION = '0.02'; # VERSION
 
 use strict;
+use warnings;
 use charnames qw< :full >;
 use Carp qw(croak);
 use Readonly;
@@ -112,7 +113,7 @@ MAB2::Parser::RAW - MAB2 RAW format parser
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 

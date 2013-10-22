@@ -1,0 +1,21 @@
+Changelog for Catmandu-MAB2
+
+0.02 2013-11-22
+ - added file encoding
+ - added XML declaration and collection handling
+ - minor correction of fix
+ - added "use warnings;"
+ - added Moo to prerequisites
+ - added CHANGES file to distribution
+
+0.01 2013-10-01
+ - added record separator to test data
+ - perltidy
+ - removed start() call from build
+ - added some modules
+ - added Catmandu exporter for MAB2 data
+ - added Makefile.pl
+ - removed github plugins
+ - correction of github URL
+ - initial commit 
+ 
