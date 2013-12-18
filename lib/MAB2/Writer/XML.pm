@@ -1,16 +1,16 @@
 package MAB2::Writer::XML;
 
 #ABSTRACT: MAB2 XML format serializer
-our $VERSION = '0.02'; #VERSION
-
-# ToDo: xml_escape
+our $VERSION = '0.03'; #VERSION
 
 use strict;
 use Moo;
 with 'MAB2::Writer::Handle';
 
+
 has xml_declaration => ( is => 'ro' , default => sub {0} );
 has collection      => ( is => 'ro' , default => sub {0} );
+
 
 sub start {
     my ($self) = @_;
@@ -19,6 +19,7 @@ sub start {
     print { $self->fh }
         "<datei xmlns=\"http://www.ddb.de/professionell/mabxml/mabxml-1.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.ddb.de/professionell/mabxml/mabxml-1.xsd http://www.d-nb.de/standardisierung/formate/mabxml-1.xsd\">\n" if $self->collection;
 }
+
 
 sub _write_record {
     my ( $self, $record ) = @_;
@@ -54,6 +55,7 @@ sub _write_record {
     print $fh "</datensatz>\n";
 }
 
+
 sub end {
     my ($self) = @_;
 
@@ -72,7 +74,54 @@ MAB2::Writer::XML - MAB2 XML format serializer
 
 =head1 VERSION
 
-version 0.02
+version 0.03
+
+=head1 SYNOPSIS
+
+L<MAB2::Writer::XML> is a MAB2 XML serializer.
+
+    use MAB2::Writer::XML;
+
+    my @mab_records = (
+        [
+          ['001', ' ', '_', '2415107-5'],
+          ['331', ' ', '_', 'Code4Lib journal'],
+          ['655', 'e', 'u', 'http://journal.code4lib.org/', 'z', 'kostenfrei'],
+          ...
+        ],
+        {
+          record => [
+              ['001', ' ', '_', '2415107-5'],
+              ['331', ' ', '_', 'Code4Lib journal'],
+              ['655', 'e', 'u', 'http://journal.code4lib.org/', 'z', 'kostenfrei'],
+              ...
+          ]
+        }
+    );
+
+    my $writer = MAB2::Writer::XML->new( fh => $fh, xml_declaration => 1, collection => 1 );
+    
+    $writer->start();
+
+    foreach my $record (@mab_records) {
+        $writer->write($record);
+    }
+
+    $writer->end();
+
+=head1 SUBROUTINES/METHODS
+
+=head2 new()
+
+=head2 start()
+
+Writes XML declaration and/or start element for a collection.
+
+=head2 _write_record()
+
+=head2 end()
+
+Writes end element for the collection.
 
 =head1 AUTHOR
 

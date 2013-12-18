@@ -1,7 +1,7 @@
 package MAB2::Parser::XML;
 
 # ABSTRACT: MAB2 XML parser
-our $VERSION = '0.02'; # VERSION
+our $VERSION = '0.03'; # VERSION
 
 use strict;
 use warnings;
@@ -104,15 +104,14 @@ MAB2::Parser::XML - MAB2 XML parser
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
 L<MAB2::Parser::XML> is a parser for MAB2 XML records.
 
-UTF-8...
-
-Catmandu...
+L<MAB2::Parser::XML> expects UTF-8 encoded files as input. Otherwise provide a 
+filehande with a specified I/O layer.
 
     use MAB2::Parser::XML;
 

@@ -18,4 +18,4 @@ requires:
   Moo: 1.0
   Readonly: 1.0
   XML::LibXML::Reader: 2.0
-version: 0.02
+version: 0.03

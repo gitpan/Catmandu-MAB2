@@ -1,10 +1,11 @@
 package Catmandu::Importer::MAB2;
 
 # ABSTRACT: Package that imports MAB2 data
-our $VERSION = '0.02'; # VERSION
+our $VERSION = '0.03'; # VERSION
 
 use Catmandu::Sane;
 use Moo;
+use MAB2::Parser::Disk;
 use MAB2::Parser::RAW;
 use MAB2::Parser::XML;
 
@@ -24,6 +25,9 @@ sub mab_generator {
     elsif ( $type eq 'xml' ) {
         $file = MAB2::Parser::XML->new( $self->fh );
     }
+    elsif ( $type eq 'disk' ) {
+        $file = MAB2::Parser::Disk->new( $self->fh );
+    }
     else {
         die "unknown format";
     }
@@ -41,7 +45,7 @@ sub generator {
     my ($self) = @_;
     
     my $type = lc($self->type);
-    if ( $type =~ /raw|xml$/ ) {
+    if ( $type =~ /raw|xml|disk$/ ) {
         return $self->mab_generator;
     }
     else {
@@ -62,7 +66,7 @@ Catmandu::Importer::MAB2 - Package that imports MAB2 data
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
@@ -109,7 +113,7 @@ identifier of the record) and 'record' containing an ARRAY of ARRAYs for every f
 =head2 new(file => $filename,type=>$type,[id=>$id_field])
 
 Create a new MAB2 importer for $filename. Use STDIN when no filename is given. Type 
-describes the sytax of the MAB records. Currently we support: RAW and XML.
+describes the sytax of the MAB records. Currently we support: RAW, XML and Disk.
 
 Optionally provide an 'id' option pointing to the identifier field of the MAB record
 (default 001).

@@ -1,6 +1,6 @@
-package MAB2::Writer::RAW;
+package MAB2::Writer::Disk;
 
-#ABSTRACT: MAB2 RAW format serializer
+#ABSTRACT: MAB2 Diskette format serializer
 our $VERSION = '0.03'; #VERSION
 
 use strict;
@@ -9,9 +9,10 @@ with 'MAB2::Writer::Handle';
 
 use charnames ':full';
 use Readonly;
+
 Readonly my $SUBFIELD_INDICATOR => qq{\N{INFORMATION SEPARATOR ONE}};
-Readonly my $END_OF_FIELD       => qq{\N{INFORMATION SEPARATOR TWO}};
-Readonly my $END_OF_RECORD      => qq{\N{INFORMATION SEPARATOR THREE}};
+Readonly my $END_OF_FIELD       => qq{\n};
+Readonly my $END_OF_RECORD      => qq{\n};
 
 
 sub BUILD {
@@ -25,11 +26,11 @@ sub _write_record {
 
     if ( $record->[0][0] eq 'LDR' ) {
         my $leader = shift( @{$record} );
-        print $fh "$leader";
+        print $fh "### ", $leader->[3], $END_OF_FIELD;
     }
     else {
         # set default record leader
-        print $fh "99999nM2.01200024      h";
+        print $fh "### 99999nM2.01200024      h", $END_OF_FIELD;
     }
 
     foreach my $field (@$record) {
@@ -47,7 +48,7 @@ sub _write_record {
             print $fh $END_OF_FIELD;
         }
     }
-    print $fh $END_OF_RECORD,"\n";
+    print $fh $END_OF_RECORD;
 }
 
 1;
@@ -58,7 +59,7 @@ __END__
 
 =head1 NAME
 
-MAB2::Writer::RAW - MAB2 RAW format serializer
+MAB2::Writer::Disk - MAB2 Diskette format serializer
 
 =head1 VERSION
 
@@ -66,9 +67,9 @@ version 0.03
 
 =head1 SYNOPSIS
 
-L<MAB2::Writer::RAW> is a MAB2 serializer.
+L<MAB2::Writer::Disk> is a MAB2 Diskette serializer.
 
-    use MAB2::Writer::RAW;
+    use MAB2::Writer::Disk;
 
     my @mab_records = (
 
@@ -88,7 +89,7 @@ L<MAB2::Writer::RAW> is a MAB2 serializer.
         }
     );
 
-    $writer = MAB2::Writer::RAW->new( fh => $fh );
+    $writer = MAB2::Writer::Disk->new( fh => $fh );
 
     foreach my $record (@mab_records) {
         $writer->write($record);
