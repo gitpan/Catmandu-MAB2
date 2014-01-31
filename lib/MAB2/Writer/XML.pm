@@ -1,12 +1,11 @@
 package MAB2::Writer::XML;
 
 #ABSTRACT: MAB2 XML format serializer
-our $VERSION = '0.03'; #VERSION
+our $VERSION = '0.04'; #VERSION
 
 use strict;
 use Moo;
 with 'MAB2::Writer::Handle';
-
 
 has xml_declaration => ( is => 'ro' , default => sub {0} );
 has collection      => ( is => 'ro' , default => sub {0} );
@@ -62,6 +61,7 @@ sub end {
     print { $self->fh } "</datei>\n" if $self->collection;
 }
 
+
 1;
 
 __END__
@@ -74,7 +74,7 @@ MAB2::Writer::XML - MAB2 XML format serializer
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 
@@ -109,9 +109,25 @@ L<MAB2::Writer::XML> is a MAB2 XML serializer.
 
     $writer->end();
 
-=head1 SUBROUTINES/METHODS
+=head1 Arguments
 
-=head2 new()
+=over
+
+=item C<xml_declaration>
+
+Write XML declaration. Set to 0 or 1. Default: 0. Optional.
+
+=item C<collection>
+
+Wrap records in collection element (<datei>). Set to 0 or 1. Default: 0. Optional.
+
+=back
+
+See also L<MAB2::Writer::Handle>.
+
+=head1 METHODS
+
+=head2 new(file => $file | fh => $fh [, xml_declaration => 1, collection => 1, encoding => 'UTF-8'])
 
 =head2 start()
 
@@ -122,6 +138,10 @@ Writes XML declaration and/or start element for a collection.
 =head2 end()
 
 Writes end element for the collection.
+
+=head1 SEEALSO
+
+L<MAB2::Writer::Handle>, L<Catmandu::Exporter>.
 
 =head1 AUTHOR
 

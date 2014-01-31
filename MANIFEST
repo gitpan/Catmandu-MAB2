@@ -4,6 +4,7 @@ MANIFEST
 META.yml
 Makefile.PL
 README
+bin/mab2_convert.pl
 cpanfile
 dist.ini
 lib/Catmandu/Exporter/MAB2.pm

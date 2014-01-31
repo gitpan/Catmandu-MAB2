@@ -1,7 +1,7 @@
 package MAB2::Parser::Disk;
 
-# ABSTRACT: MAB2 RAW format parser
-our $VERSION = '0.03'; # VERSION
+# ABSTRACT: MAB2 Diskette format parser
+our $VERSION = '0.04'; # VERSION
 
 use strict;
 use warnings;
@@ -10,11 +10,9 @@ use Carp qw(croak);
 use Readonly;
 
 Readonly my $SUBFIELD_INDICATOR => qq{\N{INFORMATION SEPARATOR ONE}};
-Readonly my $END_OF_FIELD       => qq{\n};
+Readonly my $END_OF_FIELD       => qq{\N{LINE FEED}};
 Readonly my $END_OF_RECORD      => q{};
 
-
-# ToDo: use Moo
 
 sub new {
     my $class = shift;
@@ -88,12 +86,10 @@ sub _decode {
         # check if indicator is an single alphabetic character
         ( $ind =~ m/^[a-z\s]$/xms ) or croak "Invalid indicator: \"$ind\"";
 
-        # check if data contains subfields
-        if ( $data =~ $SUBFIELD_INDICATOR ) {
-
-            # check if data starts with a SUBFIELD_INDICATOR
-            ( substr( $data, 0, 1 ) eq $SUBFIELD_INDICATOR ) or croak "Invalid subfield structure at: \"$tag$ind\"";
-            my @subfields = split( $SUBFIELD_INDICATOR, substr( $data, 1 ) );
+        # check if data contains subfield indicators
+        if ( $data =~ m/^\s*($SUBFIELD_INDICATOR|\$)(.*)/ ) {
+            my $subfield_indicator = $1;
+            my @subfields = split( $subfield_indicator, $2 );
             ( @subfields ) or croak "no subfield data found: \"$tag$ind$data\"";
             push(
                 @record,
@@ -110,26 +106,27 @@ sub _decode {
     return \@record;    
 }
 
+
+1;    # End of MAB2::Parser::Disk
+
 __END__
 
 =pod
 
 =head1 NAME
 
-MAB2::Parser::Disk - MAB2 RAW format parser
+MAB2::Parser::Disk - MAB2 Diskette format parser
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 
-L<MAB2::Parser::Disk> is a parser for MAB2-Diskette records.
+L<MAB2::Parser::Disk> is a parser for MAB2 Diskette records.
 
 L<MAB2::Parser::Disk> expects UTF-8 encoded files as input. Otherwise provide a 
 filehande with a specified I/O layer.
-
-Catmandu...
 
     use MAB2::Parser::Disk;
 
@@ -139,19 +136,35 @@ Catmandu...
         # do something        
     }
 
-=head1 SUBROUTINES/METHODS
+=head1 Arguments
 
-=head2 new
+=over
+
+=item C<file>
+
+Path to file with MAB2 Diskette records.
+
+=item C<fh>
+
+Open filehandle for file with MAB2 Diskette records.
+
+=back
+
+=head1 METHODS
+
+=head2 new($filename | $filehandle)
 
 =head2 next()
 
 Reads the next record from MAB2 input stream. Returns a Perl hash.
 
-=head2 _decode()
+=head2 _decode($record)
 
-Deserialize a raw MAB2 record to an array of field arrays.
+Deserialize a raw MAB2 record to an ARRAY of ARRAYs.
 
-1;    # End of MAB2::Parser::Disk
+=head1 SEE ALSO
+
+L<Catmandu::Importer::MAB2>.
 
 =head1 AUTHOR
 

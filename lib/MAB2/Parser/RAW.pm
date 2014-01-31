@@ -1,7 +1,7 @@
 package MAB2::Parser::RAW;
 
 # ABSTRACT: MAB2 RAW format parser
-our $VERSION = '0.03'; # VERSION
+our $VERSION = '0.04'; # VERSION
 
 use strict;
 use warnings;
@@ -111,7 +111,7 @@ MAB2::Parser::RAW - MAB2 RAW format parser
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 
@@ -128,21 +128,35 @@ filehande with a specified I/O layer.
         # do something        
     }
 
-=head1 SUBROUTINES/METHODS
+=head1 Arguments
 
-=head2 new
+=over
+
+=item C<file>
+
+Path to file with MAB2 Band records.
+
+=item C<fh>
+
+Open filehandle for file with MAB2 Band records.
+
+=back
+
+=head1 METHODS
+
+=head2 new($filename | $filehandle)
 
 =head2 next()
 
 Reads the next record from MAB2 input stream. Returns a Perl hash.
 
-=head2 _decode()
+=head2 _decode($record)
 
-Deserialize a raw MAB2 record to an array of field arrays.
+Deserialize a raw MAB2 record to an ARRAY of ARRAYs.
 
 =head1 SEEALSO
 
-...
+L<Catmandu::Importer::MAB2>.
 
 =head1 AUTHOR
 

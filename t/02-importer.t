@@ -27,7 +27,7 @@ $importer->each(
 );
 ok(scalar @records == 20, 'records');
 ok( $records[0]->{'_id'} eq '47918-4', 'record _id' );
-is_deeply( $records[0]->{'record'}->[0], ['001', ' ', '_', '47918-4'],,
+is_deeply( $records[0]->{'record'}->[0], ['001', ' ', '_', '47918-4'],
     'record field'
 );
 
@@ -41,8 +41,8 @@ $importer->each(
 );
 ok(scalar @records == 20, 'records');
 ok( $records[0]->{'_id'} eq '47918-4', 'record _id' );
-is_deeply( $records[0]->{'record'}->[0], ['LDR', '', '_', '02020nM2.01200024      h'],,
+is_deeply( $records[0]->{'record'}->[0], ['LDR', '', '_', '02020nM2.01200024      h'],
     'record field'
 );
 
-done_testing();
+done_testing;

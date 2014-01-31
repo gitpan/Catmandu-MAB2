@@ -1,7 +1,7 @@
 package Catmandu::MAB2;
 
 # ABSTRACT: Catmandu modules for working with MAB2 data.
-our $VERSION = '0.03'; # VERSION
+our $VERSION = '0.04'; # VERSION
 
 use strict;
 use warnings;
@@ -19,9 +19,11 @@ Catmandu::MAB2 - Catmandu modules for working with MAB2 data.
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 CATMANDU MODULES
+
+Catmandu modules for parsing, fixing and writing MAB2 data.
 
 =over
 
@@ -35,11 +37,19 @@ version 0.03
 
 =head1 INTERNAL MODULES
 
+Parser and writer for MAB2 data. These modules could also be used without Catmandu.
+
 =over
+
+=item * L<MAB2::Parser::Disk>
 
 =item * L<MAB2::Parser::RAW>
 
 =item * L<MAB2::Parser::XML>
+
+=item * L<MAB2::Writer::Handle>
+
+=item * L<MAB2::Writer::Disk>
 
 =item * L<MAB2::Writer::RAW>
 
@@ -49,9 +59,11 @@ version 0.03
 
 =head1 SUPPORT
 
-You can find documentation for this module with the perldoc command.
+You can find documentation for this distribution with the perldoc command.
 
-    perldoc Catmandu::MAB2
+    perldoc Catmandu::Importer::MAB2
+    perldoc Catmandu::Exporter::MAB2
+    perldoc Catmandu::Fix::mab_map
 
 You can also look for information at:
 

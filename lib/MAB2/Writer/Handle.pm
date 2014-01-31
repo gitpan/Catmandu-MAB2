@@ -1,7 +1,7 @@
 package MAB2::Writer::Handle;
 
-# ABSTRACT: Utility class that implements a file and filehandle attribute to write to
-our $VERSION = '0.03'; # VERSION
+# ABSTRACT: Utility class for common MAB2::Writer arguments and methods.
+our $VERSION = '0.04'; # VERSION
 
 use strict;
 use Moo::Role;
@@ -52,14 +52,14 @@ sub close_fh {
 }
 
 sub write {
-    my $self = shift;
-    my $fh   = $self->fh;
+    my ($self, @records) = @_;
 
-    foreach my $record (@_) {
+    foreach my $record (@records) {
         $record = $record->{record} if ref $record eq 'HASH';
         $self->_write_record($record);
     }
 }
+
 
 1;
 
@@ -69,11 +69,43 @@ __END__
 
 =head1 NAME
 
-MAB2::Writer::Handle - Utility class that implements a file and filehandle attribute to write to
+MAB2::Writer::Handle - Utility class for common MAB2::Writer arguments and methods.
 
 =head1 VERSION
 
-version 0.03
+version 0.04
+
+=head1 Arguments
+
+=over
+
+=item C<file>
+
+Path to file.
+
+=item C<fh>
+
+Open filehandle.
+
+=item C<encoding>
+
+Set encoding.
+
+=back
+
+=head1 METHODS
+
+=head2 _set_fh()
+
+Open filehandle (with specified encoding) from file. 
+
+=head2 close_fh()
+
+Close filehandle.
+
+=head2 write()
+
+Write record to filehandle. 
 
 =head1 AUTHOR
 

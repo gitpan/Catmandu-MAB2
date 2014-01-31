@@ -1,7 +1,7 @@
 package MAB2::Writer::RAW;
 
 #ABSTRACT: MAB2 RAW format serializer
-our $VERSION = '0.03'; #VERSION
+our $VERSION = '0.04'; #VERSION
 
 use strict;
 use Moo;
@@ -11,12 +11,7 @@ use charnames ':full';
 use Readonly;
 Readonly my $SUBFIELD_INDICATOR => qq{\N{INFORMATION SEPARATOR ONE}};
 Readonly my $END_OF_FIELD       => qq{\N{INFORMATION SEPARATOR TWO}};
-Readonly my $END_OF_RECORD      => qq{\N{INFORMATION SEPARATOR THREE}};
-
-
-sub BUILD {
-    my ($self) = @_;
-}
+Readonly my $END_OF_RECORD      => qq{\N{INFORMATION SEPARATOR THREE}\N{LINE FEED}};
 
 
 sub _write_record {
@@ -47,8 +42,9 @@ sub _write_record {
             print $fh $END_OF_FIELD;
         }
     }
-    print $fh $END_OF_RECORD,"\n";
+    print $fh $END_OF_RECORD;
 }
+
 
 1;
 
@@ -62,7 +58,7 @@ MAB2::Writer::RAW - MAB2 RAW format serializer
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 
@@ -94,11 +90,19 @@ L<MAB2::Writer::RAW> is a MAB2 serializer.
         $writer->write($record);
     }
 
-=head1 SUBROUTINES/METHODS
+=head1 Arguments
 
-=head2 new()
+See L<MAB2::Writer::Handle>.
 
-=head2 _write_record()
+=head1 METHODS
+
+=head2 new(file => $file | fh => $fh [, encoding => 'UTF-8'])
+
+=head2 _write_record($record)
+
+=head1 SEEALSO
+
+L<MAB2::Writer::Handle>, L<Catmandu::Exporter>.
 
 =head1 AUTHOR
 
