@@ -1,7 +1,7 @@
 package Catmandu::Importer::MAB2;
 
 # ABSTRACT: Package that imports MAB2 data
-our $VERSION = '0.04'; # VERSION
+our $VERSION = '0.05'; # VERSION
 
 use Catmandu::Sane;
 use Moo;
@@ -66,7 +66,7 @@ Catmandu::Importer::MAB2 - Package that imports MAB2 data
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 

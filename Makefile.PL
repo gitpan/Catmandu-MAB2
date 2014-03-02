@@ -23,13 +23,14 @@ my %WriteMakefileArgs = (
   "NAME" => "Catmandu::MAB2",
   "PREREQ_PM" => {
     "Catmandu" => "0.7",
+    "Catmandu::SRU" => "0.032",
     "Encode" => "2.5",
     "Moo" => "1.0",
     "Readonly" => "1.0",
     "XML::LibXML::Reader" => "2.0"
   },
   "TEST_REQUIRES" => {},
-  "VERSION" => "0.04",
+  "VERSION" => "0.05",
   "test" => {
     "TESTS" => "t/*.t"
   }

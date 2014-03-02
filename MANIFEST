@@ -10,6 +10,7 @@ dist.ini
 lib/Catmandu/Exporter/MAB2.pm
 lib/Catmandu/Fix/mab_map.pm
 lib/Catmandu/Importer/MAB2.pm
+lib/Catmandu/Importer/SRU/Parser/mabxml.pm
 lib/Catmandu/MAB2.pm
 lib/MAB2/Parser/Disk.pm
 lib/MAB2/Parser/RAW.pm
@@ -24,6 +25,9 @@ t/02-importer.t
 t/03-fix.t
 t/04-exporter.t
 t/05-writer.t
+t/06-sru.t
+t/lib/MockFurl.pm
 t/mab2.dat
 t/mab2.xml
 t/mab2disk.dat
+t/sru_mabxml.xml

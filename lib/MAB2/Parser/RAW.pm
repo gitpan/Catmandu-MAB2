@@ -1,7 +1,7 @@
 package MAB2::Parser::RAW;
 
 # ABSTRACT: MAB2 RAW format parser
-our $VERSION = '0.04'; # VERSION
+our $VERSION = '0.05'; # VERSION
 
 use strict;
 use warnings;
@@ -111,7 +111,7 @@ MAB2::Parser::RAW - MAB2 RAW format parser
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 

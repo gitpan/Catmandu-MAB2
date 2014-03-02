@@ -1,7 +1,7 @@
 package MAB2::Parser::XML;
 
 # ABSTRACT: MAB2 XML parser
-our $VERSION = '0.04'; # VERSION
+our $VERSION = '0.05'; # VERSION
 
 use strict;
 use warnings;
@@ -11,7 +11,7 @@ use XML::LibXML::Reader;
 
 sub new {
     my $class = shift;
-    my $file  = shift;
+    my $input  = shift;
 
     my $self = {
         filename   => undef,
@@ -20,21 +20,26 @@ sub new {
     };
 
     # check for file or filehandle
-    my $ishandle = eval { fileno($file); };
+    my $ishandle = eval { fileno($input); };
     if ( !$@ && defined $ishandle ) {
-        my $reader = XML::LibXML::Reader->new( IO => $file )
-            or croak "cannot read from filehandle $file\n";
-        $self->{filename}   = scalar $file;
+        my $reader = XML::LibXML::Reader->new( IO => $input )
+            or croak "cannot read from filehandle $input\n";
+        $self->{filename}   = scalar $input;
         $self->{xml_reader} = $reader;
     }
-    elsif ( -e $file ) {
-        my $reader = XML::LibXML::Reader->new( location => $file )
-            or croak "cannot read from file $file\n";
-        $self->{filename}   = $file;
+    elsif ( -e $input ) {
+        my $reader = XML::LibXML::Reader->new( location => $input )
+            or croak "cannot read from file $input\n";
+        $self->{filename}   = $input;
+        $self->{xml_reader} = $reader;
+    }
+    elsif ( defined $input && length $input > 0 ) {
+        my $reader = XML::LibXML::Reader->new( string => $input )
+            or croak "cannot read XML string $input\n";
         $self->{xml_reader} = $reader;
     }
     else {
-        croak "file or filehande $file does not exists";
+        croak "file, filehande or string $input does not exists";
     }
     return ( bless $self, $class );
 }
@@ -102,7 +107,7 @@ MAB2::Parser::XML - MAB2 XML parser
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 
@@ -131,11 +136,15 @@ Path to file with MAB2 XML records.
 
 Open filehandle for file with MAB2 XML records.
 
+=item C<string>
+
+XML string with MAB2 XML records.
+
 =back
 
 =head1 METHODS
 
-=head2 new($filename | $filehandle)
+=head2 new($filename | $filehandle | $string)
 
 =head2 next()
 
