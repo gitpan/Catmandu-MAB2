@@ -1,7 +1,7 @@
 package MAB2::Parser::XML;
 
-# ABSTRACT: MAB2 XML parser
-our $VERSION = '0.05'; # VERSION
+#ABSTRACT: MAB2 XML parser
+our $VERSION = '0.06'; #VERSION
 
 use strict;
 use warnings;
@@ -22,12 +22,13 @@ sub new {
     # check for file or filehandle
     my $ishandle = eval { fileno($input); };
     if ( !$@ && defined $ishandle ) {
+        binmode $input; # drop all PerlIO layers, as required by libxml2
         my $reader = XML::LibXML::Reader->new( IO => $input )
             or croak "cannot read from filehandle $input\n";
         $self->{filename}   = scalar $input;
         $self->{xml_reader} = $reader;
     }
-    elsif ( -e $input ) {
+    elsif ( defined $input && $input !~ /\n/ && -e $input ) {
         my $reader = XML::LibXML::Reader->new( location => $input )
             or croak "cannot read from file $input\n";
         $self->{filename}   = $input;
@@ -107,14 +108,11 @@ MAB2::Parser::XML - MAB2 XML parser
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
 L<MAB2::Parser::XML> is a parser for MAB2 XML records.
-
-L<MAB2::Parser::XML> expects UTF-8 encoded files as input. Otherwise provide a 
-filehande with a specified I/O layer.
 
     use MAB2::Parser::XML;
 

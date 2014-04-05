@@ -1,7 +1,7 @@
 package MAB2::Writer::Handle;
 
-# ABSTRACT: Utility class for common MAB2::Writer arguments and methods.
-our $VERSION = '0.05'; # VERSION
+#ABSTRACT: Utility class for common MAB2::Writer arguments and methods.
+our $VERSION = '0.06'; #VERSION
 
 use strict;
 use Moo::Role;
@@ -73,7 +73,7 @@ MAB2::Writer::Handle - Utility class for common MAB2::Writer arguments and metho
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 Arguments
 

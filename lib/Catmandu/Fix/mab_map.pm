@@ -1,7 +1,7 @@
 package Catmandu::Fix::mab_map;
 
-# ABSTRACT: copy mab values of one field to a new field
-our $VERSION = '0.05'; # VERSION
+#ABSTRACT: copy mab values of one field to a new field
+our $VERSION = '0.06'; #VERSION
 
 use Catmandu::Sane;
 use Catmandu::Util qw(:is :data);
@@ -191,7 +191,7 @@ Catmandu::Fix::mab_map - copy mab values of one field to a new field
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -221,14 +221,6 @@ version 0.05
 
     # Do the same examples now with the fields in 'record2'
     mab_map('245','my.title', -record => 'record2');
-
-=head1 NAME
-
-Catmandu::Fix::mab_map - copy mab values of one field to a new field
-
-=head1 SEE ALSO
-
-L<Catmandu::Fix>, L<Catmandu::Introduction>;
 
 =head1 AUTHOR
 

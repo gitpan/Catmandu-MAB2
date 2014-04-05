@@ -1,7 +1,7 @@
 package Catmandu::Exporter::MAB2;
 
 #ABSTRACT: Package that exports MAB2 data
-our $VERSION = '0.05'; #VERSION
+our $VERSION = '0.06'; #VERSION
 
 use Catmandu::Sane;
 use MAB2::Writer::Disk;
@@ -59,7 +59,7 @@ sub commit {
     $self->writer->close_fh();
 
 }
-
+ 
 
 1;
 
@@ -73,7 +73,7 @@ Catmandu::Exporter::MAB2 - Package that exports MAB2 data
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -90,10 +90,6 @@ version 0.05
  
     $exporter->add($data);
     $exporter->commit;
-
-=head1 NAME
-
-Catmandu::Exporter::MAB2 - serialize parsed MAB2 data
 
 =head1 Arguments
 
@@ -135,9 +131,24 @@ Add record to exporter.
 
 Close collection (optional) and filehandle.
 
-=head1 SEE ALSO
+=head1 CONFIGURATION
 
-L<Catmandu::Exporter>, L<Catmandu::Iterable>.
+In addition to the configuration provided by L<Catmandu::Exporter> (C<file>,
+C<fh>, etc.) the importer can be configured with the following parameters:
+
+=over
+
+=item type
+
+MAB2 syntax variant. See L<Catmandu::Importer::MAB2>.
+
+=item xml_declaration
+
+Write XML declaration. Set to 0 or 1. Default: 0. Optional.
+
+=item collection
+
+Wrap records in collection element (<datei>). Set to 0 or 1. Default: 0. Optional.
 
 =head1 AUTHOR
 

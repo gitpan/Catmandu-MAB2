@@ -1,7 +1,7 @@
 package MAB2::Parser::Disk;
 
-# ABSTRACT: MAB2 Diskette format parser
-our $VERSION = '0.05'; # VERSION
+#ABSTRACT: MAB2 Diskette format parser
+our $VERSION = '0.06'; #VERSION
 
 use strict;
 use warnings;
@@ -119,7 +119,7 @@ MAB2::Parser::Disk - MAB2 Diskette format parser
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
