@@ -1,22 +1,26 @@
 ---
-abstract: "Catmandu modules for working with MAB2 data.\r"
+abstract: 'Catmandu modules for working with MAB2 data.'
 author:
   - 'Johann Rolschewski <rolschewski@gmail.com>'
 build_requires: {}
 configure_requires:
-  ExtUtils::MakeMaker: 6.30
+  ExtUtils::MakeMaker: '6.30'
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300037, CPAN::Meta::Converter version 2.132140'
+generated_by: 'Dist::Zilla version 5.019, CPAN::Meta::Converter version 2.141170'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
-  version: 1.4
+  version: '1.4'
 name: Catmandu-MAB2
 requires:
-  Catmandu: 0.7
-  Catmandu::SRU: 0.032
-  Encode: 2.5
-  Moo: 1.0
-  Readonly: 1.0
-  XML::LibXML::Reader: 2.0
-version: 0.06
+  Catmandu: '0.9103'
+  Catmandu::SRU: '0.032'
+  Encode: '2.5'
+  Moo: '1.0'
+  Readonly: '1.0'
+  XML::LibXML::Reader: '2.0'
+resources:
+  bugtracker: https://github.com/jorol/Catmandu-MAB2/issues
+  homepage: https://github.com/jorol/Catmandu-MAB2
+  repository: https://github.com/jorol/Catmandu-MAB2.git
+version: '0.07'

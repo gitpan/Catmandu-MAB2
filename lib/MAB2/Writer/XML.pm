@@ -1,7 +1,7 @@
 package MAB2::Writer::XML;
 
 #ABSTRACT: MAB2 XML format serializer
-our $VERSION = '0.06'; #VERSION
+our $VERSION = '0.07'; #VERSION
 
 use strict;
 use Moo;
@@ -68,13 +68,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 MAB2::Writer::XML - MAB2 XML format serializer
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 

@@ -1,7 +1,7 @@
 package MAB2::Writer::RAW;
 
 #ABSTRACT: MAB2 RAW format serializer
-our $VERSION = '0.06'; #VERSION
+our $VERSION = '0.07'; #VERSION
 
 use strict;
 use Moo;
@@ -52,13 +52,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 MAB2::Writer::RAW - MAB2 RAW format serializer
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 

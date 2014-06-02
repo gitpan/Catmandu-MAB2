@@ -1,7 +1,7 @@
 package MAB2::Writer::Disk;
 
 #ABSTRACT: MAB2 Diskette format serializer
-our $VERSION = '0.06'; #VERSION
+our $VERSION = '0.07'; #VERSION
 
 use strict;
 use charnames ':full';
@@ -59,13 +59,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 MAB2::Writer::Disk - MAB2 Diskette format serializer
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 

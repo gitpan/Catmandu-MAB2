@@ -1,0 +1,47 @@
+{
+   "abstract" : "Catmandu modules for working with MAB2 data.",
+   "author" : [
+      "Johann Rolschewski <rolschewski@gmail.com>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Dist::Zilla version 5.019, CPAN::Meta::Converter version 2.141170",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "Catmandu-MAB2",
+   "prereqs" : {
+      "configure" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "6.30"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "Catmandu" : "0.9103",
+            "Catmandu::SRU" : "0.032",
+            "Encode" : "2.5",
+            "Moo" : "1.0",
+            "Readonly" : "1.0",
+            "XML::LibXML::Reader" : "2.0"
+         }
+      }
+   },
+   "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/jorol/Catmandu-MAB2/issues"
+      },
+      "homepage" : "https://github.com/jorol/Catmandu-MAB2",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/jorol/Catmandu-MAB2.git",
+         "web" : "https://github.com/jorol/Catmandu-MAB2"
+      }
+   },
+   "version" : "0.07"
+}
+

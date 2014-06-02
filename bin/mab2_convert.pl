@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
 # ABSTRACT: Convert records from one MAB2 format to an other
-our $VERSION = '0.06'; # VERSION
+our $VERSION = '0.07'; # VERSION
 # PODNAME: mab2_convert.pl
 
 use utf8;
@@ -80,13 +80,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 mab2_convert.pl - Convert records from one MAB2 format to an other
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 AUTHOR
 

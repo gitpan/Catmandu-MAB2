@@ -1,7 +1,7 @@
 package Catmandu::Exporter::MAB2;
 
 #ABSTRACT: Package that exports MAB2 data
-our $VERSION = '0.06'; #VERSION
+our $VERSION = '0.07'; #VERSION
 
 use Catmandu::Sane;
 use MAB2::Writer::Disk;
@@ -67,13 +67,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Catmandu::Exporter::MAB2 - Package that exports MAB2 data
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 

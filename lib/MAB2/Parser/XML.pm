@@ -1,7 +1,7 @@
 package MAB2::Parser::XML;
 
 #ABSTRACT: MAB2 XML parser
-our $VERSION = '0.06'; #VERSION
+our $VERSION = '0.07'; #VERSION
 
 use strict;
 use warnings;
@@ -102,13 +102,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 MAB2::Parser::XML - MAB2 XML parser
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 
